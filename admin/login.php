@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
     <div id="login-row" class="row justify-content-center align-items-center">
       <div style="background:#CCFFFF	" id="login-column" class="col-md-6">
         <div id="login-box" class="col-md-12">
-          <h2 class="text-center text-info">Đăng Nhập Tài Khoản Của Bạn</h2> </br>
+          <h2 class="text-center text-info">Đăng Nhập Admin Của Bạn</h2> </br>
           <h4 style="text-align:center;color:red">
             <?php if (isset($checkLogin)) {
               echo $checkLogin;

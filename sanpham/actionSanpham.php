@@ -40,7 +40,7 @@ session_start();
 <body>
   <div class="sticky-top">
     <div class="menu sticky-top">
-      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
         <div class="container-fluid font-header-custom">
           <a class="navbar-branch" href="../index.php">
             <img src="../image/logo/logo.png" height="80">
@@ -103,7 +103,7 @@ session_start();
         while ($row_getList = mysqli_fetch_array($query_getList)) {
           ?>
           <a class="btn btn-primary" href="actionSanpham.php?danhmucsanpham&id=<?php echo $row_getList['ID_DanhMuc'] ?>"
-            style="background-color: #248A32;border-color:#248A32 ;"><?php echo $row_getList['TenDanhMuc'] ?></a>
+            style="background-color: #12528d;border-color:#12528d ;"><?php echo $row_getList['TenDanhMuc'] ?></a>
           </br>
           </br>
           <?php

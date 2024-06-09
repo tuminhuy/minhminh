@@ -3,7 +3,7 @@ include("conection.php");
 session_start();
 ?>
 <div class="menu sticky-top ">
-  <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+  <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
     <div class="container-fluid font-header-custom" >
       <a class="navbar-branch" href="index.php">
         <img src="image/logo/logo.png" height="80">
@@ -31,7 +31,9 @@ session_start();
         }
         ?>
         <?php if(isset($_SESSION['TenDangNhap'])) { ?>
-         
+          <li class="nav-item">
+              <a class="nav-link" href="contact.php?id=<?php echo $_SESSION['ID_ThanhVien']?>" style="color:white;">LIÊN HỆ</a>
+            </li>
           <li class="nav-item" >
             <a class="nav-link active"  href="historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
           </li>

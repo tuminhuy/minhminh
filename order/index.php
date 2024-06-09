@@ -28,7 +28,7 @@ $row_getCus = mysqli_fetch_array($query_getCus);
 <body>
   <div class="sticky-top">
     <div class="menu sticky-top">
-      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
         <div class="container-fluid font-header-custom">
           <a class="navbar-branch" href="../index.php">
             <img src="../image/logo/logo.png" height="80">
@@ -210,8 +210,8 @@ $row_getCus = mysqli_fetch_array($query_getCus);
 
 
     <p class="site-footer__copyright-content">
-      © 2023,
-      <a href="http://localhost/BanThucPham/index.php" \title="" style=" color: red"> Nhóm 5</a>
+      © 2024,
+      <a href="" style=" color: red"> </a>
   </div>
   </div>
 </body>

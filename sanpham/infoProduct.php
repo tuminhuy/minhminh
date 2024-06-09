@@ -32,7 +32,7 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
 <body>
     <div class="sticky-top">
         <div class="menu sticky-top">
-            <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+            <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
                 <div class="container-fluid font-header-custom">
                     <a class="navbar-branch" href="../index.php">
                         <img src="../image/logo/logo.png" height="80">
@@ -147,7 +147,7 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
                                     </div>
                                     <div class="action">
                                         <input type="submit" class="btn btn-primary" name='submit' value="Mua hàng"
-                                            style="background-color: #248A32;">
+                                            style="background-color: #12528d;">
                                     </div>
                                     <?php
                                 }
@@ -195,7 +195,7 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
                         </div>
                         <div class="action">
                             <input type="submit" class="btn btn-primary" name='comment' value="Bình luận"
-                                style="float:right; background-color: #248A32">
+                                style="float:right; background-color: #12528d">
                         </div>
                     <?php
                     }

@@ -60,10 +60,10 @@ $row = mysqli_fetch_array($query_Cus);
 <body>
   <div class="sticky-top">
     <div class="menu sticky-top">
-      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
         <div class="container-fluid font-header-custom">
           <a class="navbar-branch" href="../index.php">
-            <img src="../image/logo/logochinh.png" height="80">
+            <img src="../image/logo/logo.png" height="80">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -154,8 +154,8 @@ $row = mysqli_fetch_array($query_Cus);
       <div class="space" style="text-align: center; background-color: #white ">
 
         <p class="site-footer__copyright-content">
-          © 2023,
-          <a href="http://localhost/BanThucPham/index.php" \title="" style=" color: red"> Rau củ quả hữu cơ</a>
+          © 2024,
+          <a href="" \title="" style=" color: red"> Minh Cake</a>
       </div>
     </div>
 </body>

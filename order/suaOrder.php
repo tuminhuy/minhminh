@@ -61,7 +61,7 @@ $row_getCus = mysqli_fetch_array($query_getCus);
 <body>
   <div class="sticky-top">
     <div class="menu sticky-top">
-      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #248A32;">
+      <nav class="navbar navbar-expand-lg header-custom" style="background-color: #12528d;">
         <div class="container-fluid font-header-custom">
           <a class="navbar-branch" href="../index.php">
             <img src="../image/logo/logo.png" height="80">
