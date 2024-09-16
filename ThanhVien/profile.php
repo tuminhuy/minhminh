@@ -72,8 +72,8 @@ $row = mysqli_fetch_array($query_Cus);
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="index.php" style="color:white;">TẤT CẢ SẢN PHẨM</a>
+            <li class="nav-item">
+                <a class="nav-link active" href="../sanpham/index.php" style="color:white;">TẤT CẢ SẢN PHẨM</a>
               </li>
 
               <!-- Search -->
@@ -82,7 +82,13 @@ $row = mysqli_fetch_array($query_Cus);
               <li class="nav-item">
                 <a class="nav-link" href="../cart" style="color:white;">GIỎ HÀNG</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="../contact.php" style="color:white;">LIÊN HỆ</a>
+              </li>
               <?php if (isset($_SESSION['TenDangNhap'])) { ?>
+                <li class="nav-item">
+                  <a class="nav-link active" href="../historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
+                </li>
 
                 <li class="nav-item">
                   <a class="nav-link" href="../ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>

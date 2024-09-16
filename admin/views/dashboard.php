@@ -88,7 +88,9 @@
                         <td><span class="badge badge-warning">Đang Chờ duyệt</span></td>
                         <td><?php echo $row['ThoiGianLap']?></td>
                         <td>
+                            <!-- <a href="views/actionOrder.php?id=<?php echo $row['ID_HoaDon']?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a> -->
                             <a href="views/actionOrder.php?id=<?php echo $row['ID_HoaDon']?>" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+
                             <a href="views/deleteOrder.php?id=<?php echo $row['ID_HoaDon']?>" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>

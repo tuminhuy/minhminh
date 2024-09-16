@@ -23,7 +23,7 @@ if (isset($_POST['tukhoa'])) {
         </div>
         <div class="card-body">
             <div class="tableInfo">
-                <table class="table">
+                <table class="table" >
                   <thead>
                     <tr>
                       <th scope="col">STT</th>

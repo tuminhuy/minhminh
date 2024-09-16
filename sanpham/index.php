@@ -65,10 +65,12 @@ session_start();
                 <li class="nav-item">
                 <a class="nav-link" href="../cart" style="color:white;">GIỎ HÀNG</a>
               </li>
-                
+              <li class="nav-item">
+              <a class="nav-link" href="../contact.php" style="color:white;">LIÊN HỆ</a>
+              </li>               
                 <li class="nav-item" >
-            <a class="nav-link active"  href="../historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
-          </li>
+               <a class="nav-link "  href="../historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
+              </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>
                 </li>

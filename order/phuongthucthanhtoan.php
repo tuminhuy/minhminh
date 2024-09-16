@@ -60,7 +60,9 @@ if (isset($_POST['dathang'])) {
                             </li>
 
                             <!-- Search -->
-
+                            <li class="nav-item">
+                            <a class="nav-link" href="../contact.php" style="color:white;">LIÊN HỆ</a>
+                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="../cart" style="color:white;">GIỎ HÀNG</a>
@@ -104,7 +106,7 @@ if (isset($_POST['dathang'])) {
     </div>
 
     <main role="main">
-        <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+        <!-- Block content  -->
         <div class="container mt-4">
             <form class="needs-validation" name="frmthanhtoan" method="post" action="#">
                 <input type="hidden" name="kh_tendangnhap" value="dnpcuong">
@@ -152,7 +154,7 @@ if (isset($_POST['dathang'])) {
                                                 <?= $value['qty'] ?>
                                             </td>
                                             <td>
-                                                <?= $value['GiaBan'] ?> Đồng
+                                                <?= $value['GiaBan'] ?>  Đồng
                                             </td>
                                         </tbody>
                                         <?php
@@ -229,8 +231,9 @@ if (isset($_POST['dathang'])) {
                             <label for="kh_hinhThucThanhToan">Phương Thức Thanh toán</label>
                             </br>
                             <select class="form-select" aria-label=".form-select-lg example" style="" name="selectPay">
-                                <option value="shipchuyenkhoan" selected>Thanh toán bằng thẻ</option>
-                                <option value="shipcod">Thanh toán khi nhận hàng</option>
+                            <option value="shipcod">Thanh toán khi nhận hàng</option>    
+                            <option value="shipchuyenkhoan" selected>Thanh toán bằng thẻ</option>
+                                
                             </select>
                             </br>
                             </br>
@@ -245,7 +248,7 @@ if (isset($_POST['dathang'])) {
             </form>
 
         </div>
-        <!-- End block content -->
+        <!-- End content -->
     </main>
 
     <hr class="hr--large">
@@ -263,12 +266,10 @@ if (isset($_POST['dathang'])) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script src="../vendor/popperjs/popper.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-<!-- Custom script - Các file js do mình tự viết -->
 <script src="../assets/js/app.js"></script>
 
 </html>

@@ -62,6 +62,9 @@ session_start();
               <li class="nav-item">
                 <a class="nav-link" href="../cart" style="color:white;">GIỎ HÀNG</a>
               </li>
+              <li class="nav-item">
+              <a class="nav-link" href="../contact.php" style="color:white;">LIÊN HỆ</a>
+              </li>
               <?php if (isset($_SESSION['TenDangNhap'])) { ?>
 
                 <li class="nav-item">

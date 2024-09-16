@@ -54,6 +54,9 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
                             <li class="nav-item">
                                 <a class="nav-link" href="../cart" style="color:white;">GIỎ HÀNG</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../contact.php" style="color:white;">LIÊN HỆ</a>
+                            </li>
                             <?php if (isset($_SESSION['TenDangNhap'])) { ?>
 
                                 <li class="nav-item">
@@ -98,113 +101,74 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
 
     <main role="main">
         <!-- Block content  -->
+
         <div class="container mt-4">
-            <div class="card">
-                <div class="container-fliud">
-                    <form name="frmsanphamchitiet" id="frmsanphamchitiet" method="post"
-                        action="../cart/add.php?id=<?php echo $row_product['ID_SanPham']; ?>">
-                        <input type="hidden" name="sp_ten" id="sp_ten" value="<?php echo $row_product['TenSanPham']; ?>">
-                        <input type="hidden" name="sp_gia" id="sp_gia" value="<?php echo $row_product['GiaBan']; ?>">
-                        <input type="hidden" name="hinhdaidien" id="hinhdaidien"
-                            value="<?php echo $row_product['Img']; ?>">
-                        <div class="card">
-                            <div class="container-fluid">
-                                <h3>Thông tin chi tiết về Sản phẩm</h3>
-                                <div class="row">
-
+        <div class="card">
+            <div class="container-fliud">
+                <form name="frmsanphamchitiet" id="frmsanphamchitiet" method="post" action="../cart/add.php?id=<?php echo $row_product['ID_SanPham']; ?>">
+                    <input type="hidden" name="sp_ten" id="sp_ten" value="<?php echo $row_product['TenSanPham']; ?>">
+                    <input type="hidden" name="sp_gia" id="sp_gia" value="<?php echo $row_product['GiaBan']; ?>">
+                    <input type="hidden" name="hinhdaidien" id="hinhdaidien" value="<?php echo $row_product['Img']; ?>">
+                    <div class="card">
+                        <div class="container-fluid">
+                            <h3>Thông tin chi tiết về Sản phẩm</h3>
+                            <div class="row">
+                                <div class="preview col-md-6">
+                                    <div class="preview-pic tab-content">
+                                        <div class="tab-pane active" id="pic-3"><img src="../image/product/<?php echo $row_product['Img']; ?>"></div>
+                                    </div>
+                                </div>
+                                <div class="details col-md-6">
+                                    <h3 class="product-title"><?php echo $row_product['TenSanPham']; ?></h3>
+                                    <p class="product-description"><?php echo $row_product['MoTa']; ?></p>
+                                    <h4 class="price">Giá hiện tại: <span><?php echo $row_product['GiaBan']; ?> Đồng</span></h4>
+                                    <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo <strong>Uy tín</strong>!</p>
+                                    <?php if (isset($_SESSION['TenDangNhap'])) { ?>
+                                        <div class="form-group">
+                                            <label for="soluong">Số lượng đặt mua:</label>
+                                            <input type="number" class="form-control" id="soluong" name="soluong" value="1">
+                                        </div>
+                                        <div class="action">
+                                            <input type="submit" class="btn btn-primary" name='submit' value="Mua hàng" style="background-color: #12528d;">
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="wrapper row">
-                            <div class="preview col-md-6">
-                                <div class="preview-pic tab-content">
-                                    <div class="tab-pane active" id="pic-3">
-                                        <img src="../image/product/<?php echo $row_product['Img']; ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="details col-md-6">
-                                <h3 class="product-title">
-                                    <?php echo $row_product['TenSanPham']; ?>
-                                </h3>
-
-                                <p class="product-description">
-                                    <?php echo $row_product['MoTa']; ?>
-                                </p>
-
-                                <h4 class="price">Giá hiện tại: <span>
-                                        <?php echo $row_product['GiaBan']; ?> Đồng
-                                    </span></h4>
-                                <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo
-                                    <strong>Uy
-                                        tín</strong>!
-                                </p>
-                                <?php if (isset($_SESSION['TenDangNhap'])) {
-                                    ?>
-                                    <div class="form-group">
-                                        <label for="soluong">Số lượng đặt mua:</label>
-                                        <input type="number" class="form-control" id="soluong" name="soluong" value="1">
-                                    </div>
-                                    <div class="action">
-                                        <input type="submit" class="btn btn-primary" name='submit' value="Mua hàng"
-                                            style="background-color: #12528d;">
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-            <div class="card">
-                <div class="container-fluid">
-                    <h3>Bình luận về sản phẩm</h3>
-                    <?php
-                    $i = 0;
-                    while ($row_comment = mysqli_fetch_array($query_comment)) {
-                        $i++;
-                        ?>
-                        <div class="alert alert-success" role="alert">
-                            <form class="form-floating"
-                                action="actionComment.php?id_product=<?php echo $row_product['ID_SanPham']; ?>"
-                                method="POST">
-                                <small><label for="floatingInputValue" style="font-weight: bold;">
-                                        <?php echo $row_comment['HoVaTen']; ?>
-                                    </label>
-                                    <label for="floatingInputValue">
-                                        <?php echo $row_comment['ThoiGianBinhLuan']; ?>
-                                    </label>
-
-                                </small>
-                                </br>
-                                <label for="floatingInputValue" style="font-size: 20px">
-                                    <?php echo $row_comment['NoiDung']; ?>
-                                </label>
-                        </div>
-                        <?php
-                    }
+        </div>
+        <div class="card">
+            <div class="container-fluid">
+                <h3>Bình luận về sản phẩm</h3>
+                <?php
+                $i = 0;
+                while ($row_comment = mysqli_fetch_array($query_comment)) {
+                    $i++;
                     ?>
-                    <?php if (isset($_SESSION['TenDangNhap'])) {
-                        ?>
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Hãy bình luận sản phẩm tại đây"
-                                id="floatingTextarea2" name="NoiDung" style="height: 100px"></textarea>
+                    <div class="alert alert-success" role="alert">
+                        <small><label for="floatingInputValue" style="font-weight: bold;"><?php echo $row_comment['HoVaTen']; ?></label>
+                            <!-- <label for="floatingInputValue"><?php echo $row_comment['ThoiGianBinhLuan']; ?></label> -->
+                        </small>
+                        </br>
+                        <label for="floatingInputValue" style="font-size: 20px"><?php echo $row_comment['NoiDung']; ?></label>
+                    </div>
+                <?php } ?>
+                <?php if (isset($_SESSION['TenDangNhap'])) { ?>
+                    <div class="form-floating">
+                        <form action="actionComment.php?id_product=<?php echo $row_product['ID_SanPham']; ?>" method="POST">
+                            <textarea class="form-control" placeholder="Hãy bình luận sản phẩm tại đây" id="floatingTextarea2" name="NoiDung" style="height: 100px"></textarea>
                             </br>
-                        </div>
-                        <div class="action">
-                            <input type="submit" class="btn btn-primary" name='comment' value="Bình luận"
-                                style="float:right; background-color: #12528d">
-                        </div>
-                    <?php
-                    }
-                    ?>
-                    </form>
-                </div>
+                            <div class="action">
+                                <input type="submit" class="btn btn-primary" name='comment' value="Bình luận" style="float:right; background-color: #12528d">
+                            </div>
+                        </form>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-        </div>
+    </div>
     </main>
     <hr class="hr--large">
     <div class="space" style="text-align: center; background-color: #white ">

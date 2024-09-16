@@ -57,7 +57,7 @@ $query_NoOrder=mysqli_query($mysqli,$sql_NoOrder);
 
           <?php if(isset($_SESSION['TenDangNhap'])) { ?>
             <li class="nav-item">
-              <a class="nav-link" href="contact.php?id=<?php echo $_SESSION['ID_ThanhVien']?>" style="color:white;">LIÊN HỆ</a>
+              <a class="nav-link" href="contact.php" style="color:white;">LIÊN HỆ</a>
             </li>
             <li class="nav-item" >
               <a class="nav-link active"  href="historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
@@ -76,6 +76,8 @@ $query_NoOrder=mysqli_query($mysqli,$sql_NoOrder);
         </ul>
       </div>
     </div>
+
+    <!----form --->
     <form action="sanpham/actionSanPham.php?TimKiem" class="navbar-form navbar-right" method="POST">
      <div class="input-group">
        <input type="Search" placeholder="Tìm Kiếm..." class="form-control" name="tukhoa">
