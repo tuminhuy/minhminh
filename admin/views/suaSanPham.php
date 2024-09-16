@@ -1,31 +1,41 @@
 <?php
 include("../../conection.php");
+
 if (isset($_GET['id'])) {
     $ID_SanPham = $_GET['id'];
-    $sql_getSanPham = "SELECT * FROM sanpham where ID_SanPham=$ID_SanPham LIMIT 1";
+    $sql_getSanPham = "SELECT * FROM sanpham WHERE ID_SanPham = $ID_SanPham LIMIT 1";
     $query_getSanPham = mysqli_query($mysqli, $sql_getSanPham);
     $row = mysqli_fetch_array($query_getSanPham);
 }
+
 if (isset($_POST['submit'])) {
     $TenSanPham = $_POST['TenSanPham'];
     $MoTa = $_POST['MoTa'];
     $GiaBan = $_POST['GiaBan'];
+    $SoLuong = $_POST['SoLuong']; // Lấy số lượng từ form
+    
+    // Kiểm tra dữ liệu nhập vào
     if ($TenSanPham == "") {
         echo "Vui lòng nhập đủ tên!<br />";
     }
     if ($MoTa == "") {
-        echo "Vui lòng nhập đủ Mô Tả!<br />";
+        echo "Vui lòng nhập đủ mô tả!<br />";
     }
     if ($GiaBan == "") {
         echo "Vui lòng nhập giá bán!<br />";
     }
-    if ($TenSanPham != "" && $MoTa != "" && $GiaBan != "") {
-        $sql_fix = "UPDATE sanpham SET TenSanPham = '" . $TenSanPham . "', MoTa = '" . $MoTa . "',GiaBan = '" . $GiaBan . "' WHERE ID_SanPham= '$_GET[id]' ";
+    if ($SoLuong == "") {
+        echo "Vui lòng nhập số lượng!<br />"; // Thêm kiểm tra số lượng
+    }
+    
+    if ($TenSanPham != "" && $MoTa != "" && $GiaBan != "" && $SoLuong != "") {
+        $sql_fix = "UPDATE sanpham SET TenSanPham = '" . $TenSanPham . "', MoTa = '" . $MoTa . "', GiaBan = '" . $GiaBan . "', SoLuong = '" . $SoLuong . "' WHERE ID_SanPham = '$_GET[id]'";
         mysqli_query($mysqli, $sql_fix);
         header("location: ../index.php?view=list-product");
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -146,6 +156,10 @@ if (isset($_POST['submit'])) {
                                     <label for="name">Mô tả</label>
                                     <input class="form-control" type="text" name="MoTa" id="name"
                                         value="<?php echo $row['MoTa'] ?>">
+                                </div>
+                                <div class="form-group">
+                                 <label for="name">Số lượng</label>
+                                <input class="form-control" type="text" name="SoLuong" id="name" value="<?php echo $row['SoLuong'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Giá Bán</label>

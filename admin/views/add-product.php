@@ -7,15 +7,20 @@ $query_DanhMuc=mysqli_query($mysqli,$sql_DanhMuc);
 
 if (isset($_POST['submit'])) {
     $TenSanPham = $_POST['TenSanPham'];
-$GiaBan = $_POST['GiaBan'];
-$SoLuong = $_POST['SoLuong'];
-$MoTa = $_POST['MoTa'];
-$Img = $_POST['Img'];
-$ID_DanhMuc = $_POST['danhmuc'];
-$BanChay='ko';
-  $sql_add = "INSERT INTO sanpham(ID_DanhMuc,TenSanPham,MoTa,GiaBan,SoLuong,Img,BanChay) VALUES('".$ID_DanhMuc."','".$TenSanPham."','".$MoTa."','".$GiaBan."','".$SoLuong."','".$Img."','".$BanChay."')";
-  mysqli_query($mysqli,$sql_add);
+    $GiaBan = $_POST['GiaBan'];
+    $SoLuong = $_POST['SoLuong'];
+    $MoTa = $_POST['MoTa'];
+    $Img = $_POST['Img'];
+    $ID_DanhMuc = $_POST['danhmuc'];
+    $BanChay = 'ko';
+
+    // Thêm sản phẩm và số lượng tồn kho
+    $sql_add = "INSERT INTO sanpham(ID_DanhMuc, TenSanPham, MoTa, GiaBan, SoLuong, Img, BanChay) 
+                VALUES('".$ID_DanhMuc."', '".$TenSanPham."', '".$MoTa."', '".$GiaBan."', '".$SoLuong."', '".$Img."', '".$BanChay."')";
+    
+    mysqli_query($mysqli, $sql_add);
 }
+
 ?>
 
 <div id="content" class="container-fluid">
@@ -35,10 +40,15 @@ $BanChay='ko';
                             <label for="name">Giá</label>
                             <input class="form-control" type="text" name="GiaBan" id="name">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="name">Số lượng</label>
                             <input class="form-control" type="text" name="SoLuong" id="name">
+                        </div> -->
+                        <div class="form-group">
+                          <label for="name">Số lượng</label>
+                            <input class="form-control" type="text" name="SoLuong" id="name">
                         </div>
+
                     </div>
                     <div class="col-6">
                         <div class="form-group">
