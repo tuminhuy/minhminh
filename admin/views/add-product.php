@@ -77,3 +77,15 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <div class="container">
+        <!-- Form to add product -->
+    </div>
+</body>
+</html>
