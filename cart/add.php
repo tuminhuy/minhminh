@@ -50,4 +50,3 @@ if ($row) {
     header('location:../index.php');
     exit();
 }
-?>
