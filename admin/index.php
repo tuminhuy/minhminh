@@ -3,6 +3,7 @@ include("../conection.php");
 session_start();
 if (!isset($_SESSION['admin'])) {
     header('location:login.php');
+    exit(); // Đảm bảo rằng script dừng lại sau khi chuyển hướng
 }
 ?>
 
@@ -18,40 +19,6 @@ if (!isset($_SESSION['admin'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/solid.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Admintrator</title>
-    <style>
-        #chat-box {
-            width: 100%;
-            height: 300px;
-            overflow-y: scroll;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .message {
-            margin: 10px 0;
-        }
-
-        .user-message {
-            text-align: right;
-        }
-
-        .admin-message {
-            text-align: left;
-        }
-
-        #chat-input-container {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-        }
-
-        #admin-input {
-            flex: 1;
-            margin-right: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -127,6 +94,20 @@ if (!isset($_SESSION['admin'])) {
                             <li><a href="?view=list-user">Danh sách</a></li>
                         </ul>
                     </li>
+
+                    <li class="nav-link">
+                        <a href="?view=list-orders">
+                            <div class="nav-link-icon d-inline-flex">
+                                <i class="far fa-folder"></i>
+                            </div>
+                            Quản Lý Đơn Hàng
+                        </a>
+                        <i class="arrow fas fa-angle-right"></i>
+
+                        <ul class="sub-menu">
+                            <li><a href="?view=list-orders">Danh sách</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div id="wp-content">
@@ -134,13 +115,6 @@ if (!isset($_SESSION['admin'])) {
                 $view = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
                 require "views/{$view}.php";
                 ?>
-
-                <!-- Chat Box -->
-                <div id="chat-box"></div>
-                <div id="chat-input-container">
-                    <input type="text" id="admin-input" class="form-control" placeholder="Nhập tin nhắn...">
-                    <button id="send-button" class="btn btn-primary">Gửi</button>
-                </div>
             </div>
         </div>
     </div>
@@ -153,55 +127,6 @@ if (!isset($_SESSION['admin'])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function() {
-            loadMessages();
-
-            $('#send-button').click(function() {
-                sendMessage();
-            });
-
-            $('#admin-input').keypress(function(event) {
-                if (event.which == 13) {
-                    event.preventDefault();
-                    sendMessage();
-                }
-            });
-
-            function loadMessages() {
-                $.ajax({
-                    url: 'load_messages.php',
-                    method: 'GET',
-                    success: function(response) {
-                        $('#chat-box').html(response);
-                        $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                    }
-                });
-            }
-
-            function sendMessage() {
-                var adminInput = $('#admin-input').val();
-                if (adminInput.trim() !== '') {
-                    $.ajax({
-                        url: 'send_message.php',
-                        method: 'POST',
-                        data: { message: adminInput, sender: 'admin' },
-                        success: function(response) {
-                            $('#admin-input').val('');
-                            loadMessages();
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error:', error);
-                        }
-                    });
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
