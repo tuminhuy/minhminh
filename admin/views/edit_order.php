@@ -11,7 +11,10 @@ if (isset($_GET['id'])) {
         mysqli_query($mysqli, $sql_update);
 
         // Sử dụng JavaScript để chuyển hướng sau khi cập nhật
-        echo "<script>window.location.href = 'index.php?view=list-orders';</script>";
+        echo "<script>
+                alert('Đơn hàng đã được cập nhật.');
+                window.location.href = 'index.php?view=list-orders';
+              </script>";
         exit(); // Đảm bảo script dừng lại sau khi chuyển hướng
     }
 
@@ -90,11 +93,19 @@ if (isset($_GET['id'])) {
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row_detail = mysqli_fetch_assoc($query_order_details)) { ?>
+                <?php
+                // Kiểm tra nếu có dữ liệu chi tiết đơn hàng
+                if (mysqli_num_rows($query_order_details) > 0) {
+                    while ($row_detail = mysqli_fetch_assoc($query_order_details)) { ?>
+                        <tr>
+                            <td><?php echo $row_detail['TenSanPham']; ?></td>
+                            <td><?php echo $row_detail['SoLuong']; ?></td>
+                            <td><?php echo $row_detail['Gia']; ?></td>
+                        </tr>
+                    <?php }
+                } else { ?>
                     <tr>
-                        <td><?php echo $row_detail['TenSanPham']; ?></td>
-                        <td><?php echo $row_detail['SoLuong']; ?></td>
-                        <td><?php echo $row_detail['Gia']; ?></td>
+                        <td colspan="3">Không có chi tiết đơn hàng.</td>
                     </tr>
                 <?php } ?>
             </tbody>
