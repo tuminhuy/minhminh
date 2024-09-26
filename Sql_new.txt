@@ -1,0 +1,154 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+CREATE TABLE `binhluan` (
+  `ID_BinhLuan` int(11) NOT NULL,
+  `ID_ThanhVien` int(11) NOT NULL,
+  `ID_SanPham` int(11) NOT NULL,
+  `NoiDung` varchar(100) NOT NULL,
+  `ThoiGianBinhLuan` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `binhluan` (`ID_BinhLuan`, `ID_ThanhVien`, `ID_SanPham`, `NoiDung`, `ThoiGianBinhLuan`) VALUES
+(54, 13, 3087, 'ngon', '2024-06-26 15:19:09'),
+CREATE TABLE `danhmuc` (
+  `ID_DanhMuc` int(11) NOT NULL,
+  `TenDanhMuc` varchar(20) NOT NULL,
+  `Mota` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `danhmuc` (`ID_DanhMuc`, `TenDanhMuc`, `Mota`) VALUES
+(1, 'Nước Ngọt', 'Nước giải khát có ga là một loại thức uống thường chứa nước cácbon dioxide bão hòa, chất làm ngọt, và thường có thêm hương liệu. Chất làm ngọt có thể là đường, xirô bắp giàu gluctose, chất làm ngọt thay thế. Một số nước giải khát có ga khác còn chứa caffeine, phẩm màu, chất bảo quản và các thành phần khá'),
+CREATE TABLE `lienhe` (
+  `ID` int(11) NOT NULL,
+  `ID_ThanhVien` int(11) NOT NULL,
+  `HoVaTen` varchar(30) NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `NoiDung` text NOT NULL,
+  `NgayLienHe` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `lienhe` (`ID`, `ID_ThanhVien`, `HoVaTen`, `Email`, `NoiDung`, `NgayLienHe`) VALUES
+(1, 13, 'tuminhuy', 'tuminhuy21@gmail.com', '', '2024-06-26 14:08:23'),
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `sender` varchar(50) NOT NULL,
+  `receiver` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `nhacungcap` (
+  `ID_NCC` int(11) NOT NULL,
+  `TenNCC` varchar(20) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `SoDienThoai` varchar(10) NOT NULL,
+  `DiaChi` varchar(30) NOT NULL,
+  `Img` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `nhacungcap` (`ID_NCC`, `TenNCC`, `Email`, `SoDienThoai`, `DiaChi`, `Img`) VALUES
+(1, 'ABC', 'ABC@gmail.com', '0866158008', 'Tánh Linh', ''),
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total_price` decimal(10,2) NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('pending','completed','cancelled') DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `quanly` (
+  `ID_QuanLy` int(11) NOT NULL,
+  `TenDangNhap` varchar(20) NOT NULL,
+  `MatKhau` varchar(20) NOT NULL,
+  `Email` varchar(20) NOT NULL,
+  `HoVaTen` varchar(30) NOT NULL,
+  `DiaChi` varchar(30) NOT NULL,
+  `SoDienThoai` varchar(10) NOT NULL,
+  `NgayDiLam` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `quanly` (`ID_QuanLy`, `TenDangNhap`, `MatKhau`, `Email`, `HoVaTen`, `DiaChi`, `SoDienThoai`, `NgayDiLam`) VALUES
+(1, 'admin', '1', 'tuminhuy21@gmail.com', 'Từ Minh Uy', 'TP.HCM', '0779494093', '2024-02-14');
+CREATE TABLE `sanpham` (
+  `ID_SanPham` int(11) NOT NULL,
+  `ID_DanhMuc` int(11) NOT NULL,
+  `ID_NCC` int(11) NOT NULL,
+  `TenSanPham` varchar(30) NOT NULL,
+  `MoTa` text NOT NULL,
+  `GiaBan` float NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `Img` varchar(20) NOT NULL,
+  `BanChay` varchar(10) NOT NULL,
+  `SoLuongTonKho` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `sanpham` (`ID_SanPham`, `ID_DanhMuc`, `ID_NCC`, `TenSanPham`, `MoTa`, `GiaBan`, `SoLuong`, `Img`, `BanChay`, `SoLuongTonKho`) VALUES
+(3087, 2, 0, 'Bánh Kem 1', 'Bánh sinh nhật hoa quả đơn đẹp là một lựa chọn tuyệt vời để tạo nên một bữa tiệc sinh nhật thật sự đặc biệt và tươi mới. Bánh sinh nhật hoa quả đơn đẹp là một sự kết hợp tuyệt vời giữa vẻ đẹp tự nhiên và hương vị tươi mới của hoa quả. Với màu sắc phong phú, tạo hình sáng tạo và hương vị thơm ngon, bánh sinh nhật hoa quả đơn đẹp sẽ làm cho bữa tiệc sinh nhật của bạn trở nên đặc biệt và đáng nhớ.', 100000, 5, 'bsnhat1.jpg', 'ko', 0),
+(3088, 2, 0, 'Bánh Kem 2', 'Bánh sinh nhật hoa quả đơn đẹp là một lựa chọn tuyệt vời để tạo nên một bữa tiệc sinh nhật thật sự đặc biệt và tươi mới. Bánh sinh nhật hoa quả đơn đẹp là một sự kết hợp tuyệt vời giữa vẻ đẹp tự nhiên và hương vị tươi mới của hoa quả. Với màu sắc phong phú, tạo hình sáng tạo và hương vị thơm ngon, bánh sinh nhật hoa quả đơn đẹp sẽ làm cho bữa tiệc sinh nhật của bạn trở nên đặc biệt và đáng nhớ.', 100000, 8, 'bsnhat2.jpg', 'ko', 0),
+(3089, 2, 0, 'Bánh Kem 3', 'Bánh sinh nhật hoa quả đơn đẹp là một lựa chọn tuyệt vời để tạo nên một bữa tiệc sinh nhật thật sự đặc biệt và tươi mới. Bánh sinh nhật hoa quả đơn đẹp là một sự kết hợp tuyệt vời giữa vẻ đẹp tự nhiên và hương vị tươi mới của hoa quả. Với màu sắc phong phú, tạo hình sáng tạo và hương vị thơm ngon, bánh sinh nhật hoa quả đơn đẹp sẽ làm cho bữa tiệc sinh nhật của bạn trở nên đặc biệt và đáng nhớ.', 100000, 10, 'bsnhat3.jpg', 'ko', 0),
+(3090, 2, 0, 'Bánh Kem 4', 'Bánh sinh nhật hoa quả đơn đẹp là một lựa chọn tuyệt vời để tạo nên một bữa tiệc sinh nhật thật sự đặc biệt và tươi mới. Bánh sinh nhật hoa quả đơn đẹp là một sự kết hợp tuyệt vời giữa vẻ đẹp tự nhiên và hương vị tươi mới của hoa quả. Với màu sắc phong phú, tạo hình sáng tạo và hương vị thơm ngon, bánh sinh nhật hoa quả đơn đẹp sẽ làm cho bữa tiệc sinh nhật của bạn trở nên đặc biệt và đáng nhớ.', 100000, 9, 'bsnhat4.jpg', 'ko', 0),
+(3097, 3, 0, 'Green Tea Tart', '', 10000, 8, 'GreenTeaTart.png', 'ko', 0),
+(3098, 3, 0, 'Croffle', '1', 10000, 7, 'Croffle.png', 'ko', 0),
+(3099, 3, 0, 'Flan Cake', '', 10000, 6, 'FlanCake.png', 'ko', 0),
+(3100, 3, 0, 'Cake Dừa', '', 10000, 10, 'CakeDua.png', 'ko', 0),
+(3101, 1, 0, '7up', '', 10000, 9, '7up.jpg', 'ko', 0),
+(3102, 1, 0, 'Coca', '', 10000, 10, 'coca.jpg', 'ko', 0),
+(3103, 1, 0, 'Pepsi', '', 10000, 10, 'pensi.jpg', 'ko', 0),
+(3104, 1, 0, 'Fanta', 'Nước ngọt', 10000, 7, 'fanta.jpg', 'ko', 0),
+(3112, 2, 0, 'Panna Cotta ', '1444', 10000, 3, '', 'ko', 0);
+CREATE TABLE `thanhvien` (
+  `ID_ThanhVien` int(11) NOT NULL,
+  `TenDangNhap` varchar(20) NOT NULL,
+  `MatKhau` varchar(20) NOT NULL,
+  `Email` varchar(20) NOT NULL,
+  `HoVaTen` varchar(30) NOT NULL,
+  `DiaChi` varchar(30) NOT NULL,
+  `SoDienThoai` varchar(10) NOT NULL,
+  `NgayDangKi` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `thanhvien` (`ID_ThanhVien`, `TenDangNhap`, `MatKhau`, `Email`, `HoVaTen`, `DiaChi`, `SoDienThoai`, `NgayDangKi`) VALUES
+(13, 'uy', '123', 'tuminhuy21@gmail.com', 'tuminhuy', '25', '0779494093', '2024-04-14'),
+ALTER TABLE `binhluan`
+  ADD PRIMARY KEY (`ID_BinhLuan`),
+  ADD KEY `ID_ThanhVien` (`ID_ThanhVien`),
+  ADD KEY `ID_SanPham` (`ID_SanPham`);
+ALTER TABLE `danhmuc`
+  ADD PRIMARY KEY (`ID_DanhMuc`);
+ALTER TABLE `lienhe`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `lienhe_thanhvien` (`ID_ThanhVien`);
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `nhacungcap`
+  ADD PRIMARY KEY (`ID_NCC`);
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+ALTER TABLE `quanly`
+  ADD PRIMARY KEY (`ID_QuanLy`);
+
+ALTER TABLE `sanpham`
+  ADD PRIMARY KEY (`ID_SanPham`),
+  ADD KEY `ID_DanhMuc` (`ID_DanhMuc`);
+ALTER TABLE `thanhvien`
+  ADD PRIMARY KEY (`ID_ThanhVien`);
+ALTER TABLE `binhluan`
+  MODIFY `ID_BinhLuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+ALTER TABLE `danhmuc`
+  MODIFY `ID_DanhMuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+ALTER TABLE `lienhe`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `quanly`
+  MODIFY `ID_QuanLy` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `sanpham`
+  MODIFY `ID_SanPham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3113;
+ALTER TABLE `thanhvien`
+  MODIFY `ID_ThanhVien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `binhluan`
+  ADD CONSTRAINT `binhluan_ibfk_1` FOREIGN KEY (`ID_ThanhVien`) REFERENCES `thanhvien` (`ID_ThanhVien`),
+  ADD CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`ID_SanPham`) REFERENCES `sanpham` (`ID_SanPham`);
+ALTER TABLE `lienhe`
+  ADD CONSTRAINT `lienhe_thanhvien` FOREIGN KEY (`ID_ThanhVien`) REFERENCES `thanhvien` (`ID_ThanhVien`);
+ALTER TABLE `sanpham`
+  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`ID_DanhMuc`) REFERENCES `danhmuc` (`ID_DanhMuc`);
+COMMIT;

@@ -36,7 +36,7 @@
                 <td><?php echo $row_Order['ID_ThanhVien']?></td>
                  <td><?php echo $row_Order['ThoiGianLap']?></td>
                 <td><?php echo $row_Order['DiaChi']?></td>
-                <td><?php echo $row_Order['GiaTien']?></td>
+                <td><?php echo number_format($row_Order['GiaTien'], 0, ',', '.') ?> đồng</td>
          </tr>
 
 <?php

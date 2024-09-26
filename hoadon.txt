@@ -1,0 +1,17 @@
+CREATE TABLE `hoadon` (
+  `ID_HoaDon` int(11) NOT NULL,
+  `ID_ThanhVien` int(11) NOT NULL,
+  `ThoiGianLap` datetime NOT NULL,
+  `DiaChi` varchar(255) NOT NULL,
+  `GhiChu` varchar(30) NOT NULL,
+  `GiaTien` float NOT NULL,
+  `SoDienThoai` varchar(10) NOT NULL,
+  `XuLy` tinyint(1) NOT NULL,
+`TenSanPham` varchar(30) NOT NULL,
+    `GiaBan` float NOT NULL    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE `hoadon`
+  MODIFY `ID_HoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  ALTER TABLE `hoadon`
+  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`ID_ThanhVien`) REFERENCES `thanhvien` (`ID_ThanhVien`),
+  ADD CONSTRAINT `hoadon_ibfk_2` FOREIGN KEY (`ID_SanPham`) REFERENCES `thanhvien` (`ID_SanPham`);

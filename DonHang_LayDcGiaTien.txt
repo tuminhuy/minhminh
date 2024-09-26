@@ -1,5 +1,5 @@
 <?php
-include(__DIR__ . "/../../conection.php");
+include("../conection.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -24,17 +24,20 @@ if (isset($_GET['id'])) {
                   JOIN thanhvien ON hoadon.ID_ThanhVien = thanhvien.ID_ThanhVien 
                   WHERE hoadon.ID_HoaDon = $id";
     $query_order = mysqli_query($mysqli, $sql_order);
+
+    // Kiểm tra kết quả truy vấn
+    if ($query_order === false) {
+        die("Truy vấn SQL bị lỗi: " . mysqli_error($mysqli));
+    }
+
     $order = mysqli_fetch_assoc($query_order);
 
     // Truy vấn lấy chi tiết đơn hàng
-    $sql_order_details = "SELECT chitiethoadon.*, sanpham.TenSanPham 
-                          FROM chitiethoadon 
-                          JOIN sanpham ON chitiethoadon.ID_SanPham = sanpham.ID_SanPham 
-                          WHERE chitiethoadon.ID_HoaDon = $id";
+    $sql_order_details = "SELECT * FROM hoadon WHERE ID_HoaDon = $id";
     $query_order_details = mysqli_query($mysqli, $sql_order_details);
 
     // Kiểm tra kết quả truy vấn
-    if (!$query_order_details) {
+    if ($query_order_details === false) {
         die("Truy vấn SQL bị lỗi: " . mysqli_error($mysqli));
     }
 }
@@ -100,7 +103,7 @@ if (isset($_GET['id'])) {
                         <tr>
                             <td><?php echo $row_detail['TenSanPham']; ?></td>
                             <td><?php echo $row_detail['SoLuong']; ?></td>
-                            <td><?php echo $row_detail['Gia']; ?></td>
+                            <td><?php echo $row_detail['GiaTien']; ?></td>
                         </tr>
                     <?php }
                 } else { ?>

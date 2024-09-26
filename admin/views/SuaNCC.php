@@ -1,41 +1,35 @@
 <?php
 include("../../conection.php");
-
-if (isset($_GET['id'])) {
-    $ID_SanPham = $_GET['id'];
-    $sql_getSanPham = "SELECT * FROM sanpham WHERE ID_SanPham = $ID_SanPham LIMIT 1";
-    $query_getSanPham = mysqli_query($mysqli, $sql_getSanPham);
-    $row = mysqli_fetch_array($query_getSanPham);
+if (isset($_GET['id_NCC'])) {
+    $ID_NCC = $_GET['id_NCC'];
+    $sql_getNCC = "SELECT * FROM nhacungcap where ID_NCC=$ID_NCC";
+    $query_getNCC = mysqli_query($mysqli, $sql_getNCC);
+    $row = mysqli_fetch_array($query_getNCC);
 }
-
 if (isset($_POST['submit'])) {
-    $TenSanPham = $_POST['TenSanPham'];
-    $MoTa = $_POST['MoTa'];
-    $GiaBan = $_POST['GiaBan'];
-    $SoLuong = $_POST['SoLuong']; // Lấy số lượng từ form
-    
-    // Kiểm tra dữ liệu nhập vào
-    if ($TenSanPham == "") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $SoDienThoai = $_POST['SoDienThoai'];
+    $DiaChi = $_POST['DiaChi'];
+    if ($name == "") {
         echo "Vui lòng nhập đủ tên!<br />";
     }
-    if ($MoTa == "") {
-        echo "Vui lòng nhập đủ mô tả!<br />";
+    if ($email == "") {
+        echo "Vui lòng nhập đủ email!<br />";
     }
-    if ($GiaBan == "") {
-        echo "Vui lòng nhập giá bán!<br />";
+    if ($SoDienThoai == "") {
+        echo "Vui lòng nhập đủ số điện thoại!<br />";
     }
-    if ($SoLuong == "") {
-        echo "Vui lòng nhập số lượng!<br />"; // Thêm kiểm tra số lượng
+    if ($DiaChi == "") {
+        echo "Vui lòng nhập đủ Địa Chỉ!<br />";
     }
-    
-    if ($TenSanPham != "" && $MoTa != "" && $GiaBan != "" && $SoLuong != "") {
-        $sql_fix = "UPDATE sanpham SET TenSanPham = '" . $TenSanPham . "', MoTa = '" . $MoTa . "', GiaBan = '" . $GiaBan . "', SoLuong = '" . $SoLuong . "' WHERE ID_SanPham = '$_GET[id]'";
+    if ($name != "" && $email != "" && $SoDienThoai != "" && $DiaChi != "") {
+        $sql_fix = "UPDATE nhacungcap SET TenNCC = '" . $name . "', email = '" . $email . "',SoDienThoai = '" . $SoDienThoai . "',DiaChi = '" . $DiaChi . "' WHERE ID_NCC= '$_GET[id_NCC]' ";
         mysqli_query($mysqli, $sql_fix);
-        header("location: ../index.php?view=list-product");
+        header("location: ../index.php?view=list-post");
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,6 +57,8 @@ if (isset($_POST['submit'])) {
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../index.php?view=add-post">Thêm sản phẩm</a>
+                        <a class="dropdown-item" href="../index.php?view=add-product">Thêm thêm danh mục</a>
+                        <a class="dropdown-item" href="../index.php?view=list-order">Thêm nhà cung cấp</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -91,7 +87,15 @@ if (isset($_POST['submit'])) {
                         <i class="arrow fas fa-angle-right"></i>
                     </li>
                     <li class="nav-link">
-                            <ul class="sub-menu">
+                        <a href="../index.php?view=list-post">
+                            <div class="nav-link-icon d-inline-flex">
+                                <i class="far fa-folder"></i>
+                            </div>
+                            Nhà cung cấp
+                        </a>
+                        <i class="arrow fas fa-angle-right"></i>
+
+                        <ul class="sub-menu">
                             <li><a href="../index.php?view=add-post">Thêm mới</a></li>
                             <li><a href="../index.php?view=list-post">Danh sách</a></li>
                         </ul>
@@ -116,7 +120,7 @@ if (isset($_POST['submit'])) {
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                            Thống kê doanh thu
+                            Bán hàng
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
@@ -128,7 +132,7 @@ if (isset($_POST['submit'])) {
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                           Quản lý thành viên
+                            Users
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
 
@@ -137,41 +141,48 @@ if (isset($_POST['submit'])) {
                             <li><a href="../index.php?view=list-user">Danh sách</a></li>
                         </ul>
                     </li>
-                     </ul>
+
+                    <!-- <li class="nav-link"><a>Bài viết</a>
+                        <ul class="sub-menu">
+                            <li><a>Thêm mới</a></li>
+                            <li><a>Danh sách</a></li>
+                            <li><a>Thêm danh mục</a></li>
+                            <li><a>Danh sách danh mục</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-link"><a>Sản phẩm</a></li>
+                    <li class="nav-link"><a>Đơn hàng</a></li>
+                    <li class="nav-link"><a>Hệ thống</a></li> -->
+
+                </ul>
             </div>
             <div id="wp-content">
                 <div id="content" class="container-fluid">
                     <div class="card">
                         <div class="card-header font-weight-bold">
-                            Sửa Sản phẩm
+                            Thêm bài viết
                         </div>
                         <div class="card-body">
                             <form action="" method="POST">
                                 <div class="form-group">
-                                    <label for="name">Tên Sản Phẩm</label>
-                                    <input class="form-control" type="text" name="TenSanPham" id="name"
-                                        value="<?php echo $row['TenSanPham'] ?>">
+                                    <label for="name">Tên Nhà Cung Cấp</label>
+                                    <input class="form-control" type="text" name="name" id="name"
+                                        value="<?php echo $row['TenNCC'] ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Mô tả</label>
-                                    <input class="form-control" type="text" name="MoTa" id="name"
-                                        value="<?php echo $row['MoTa'] ?>">
+                                    <label for="name">Email</label>
+                                    <input class="form-control" type="text" name="email" id="name"
+                                        value="<?php echo $row['Email'] ?>">
                                 </div>
                                 <div class="form-group">
-                                 <label for="name">Số lượng</label>
-                                <input class="form-control" type="text" name="SoLuong" id="name" value="<?php echo $row['SoLuong'] ?>">
+                                    <label for="name">Số Điện Thoại</label>
+                                    <input class="form-control" type="text" name="SoDienThoai" id="name"
+                                        value="<?php echo $row['SoDienThoai'] ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="name">Giá Bán</label>
-                                    <input class="form-control" type="text" name="GiaBan" id="name"
-                                        value="<?php echo $row['GiaBan'] ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formFile">Hình ảnh</label>
-                                    <img style="width: 276px;height: 247px;"
-                                        src="../../image/product/<?php echo $row['Img']; ?>">
-                                    <input class="form-control" type="file" name="image"
-                                        value="<?php echo $row['Img']; ?>">
+                                    <label for="name">Địa Chỉ</label>
+                                    <input class="form-control" type="text" name="DiaChi" id="name"
+                                        value="<?php echo $row['DiaChi'] ?>">
                                 </div>
 
                                 <input type="submit" class="btn btn-primary" name="submit" value="Sửa">

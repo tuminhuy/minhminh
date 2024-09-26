@@ -3,7 +3,6 @@ include("../conection.php");
 session_start();
 if (!isset($_SESSION['admin'])) {
     header('location:login.php');
-    exit(); // Đảm bảo rằng script dừng lại sau khi chuyển hướng
 }
 ?>
 
@@ -33,6 +32,8 @@ if (!isset($_SESSION['admin'])) {
                     </button>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="?view=add-post">Thêm sản phẩm</a>
+                        <a class="dropdown-item" href="?view=add-product">Thêm thêm danh mục</a>
+                        <a class="dropdown-item" href="?view=add-post">Thêm nhà cung cấp</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -60,10 +61,19 @@ if (!isset($_SESSION['admin'])) {
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                     </li>
-                    <ul class="sub-menu">
-                        <li><a href="?view=add-post">Thêm mới</a></li>
-                        <li><a href="?view=list-post">Danh sách</a></li>
-                    </ul>
+                    <li class="nav-link">
+                        <a href="?view=list-post">
+                            <div class="nav-link-icon d-inline-flex">
+                                <i class="far fa-folder"></i>
+                            </div>
+                            Nhà cung cấp
+                        </a>
+                        <i class="arrow fas fa-angle-right"></i>
+
+                        <ul class="sub-menu">
+                            <li><a href="?view=add-post">Thêm mới</a></li>
+                            <li><a href="?view=list-post">Danh sách</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-link active">
@@ -80,7 +90,18 @@ if (!isset($_SESSION['admin'])) {
                             <li><a href="?view=cat-product">Danh mục</a></li>
                         </ul>
                     </li>
-
+                    <li class="nav-link">
+                        <a href="?view=list-order">
+                            <div class="nav-link-icon d-inline-flex">
+                                <i class="far fa-folder"></i>
+                            </div>
+                            Thống kê doanh thu
+                        </a>
+                        <i class="arrow fas fa-angle-right"></i>
+                        <ul class="sub-menu">
+                            <li><a href="?view=list-order">Đơn hàng</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-link">
                         <a href="?view=list-user">
                             <div class="nav-link-icon d-inline-flex">
@@ -91,36 +112,40 @@ if (!isset($_SESSION['admin'])) {
                         <i class="arrow fas fa-angle-right"></i>
 
                         <ul class="sub-menu">
+
                             <li><a href="?view=list-user">Danh sách</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="?view=list-orders">
-                            <div class="nav-link-icon d-inline-flex">
-                                <i class="far fa-folder"></i>
-                            </div>
-                            Quản Lý Đơn Hàng
-                        </a>
-                        <i class="arrow fas fa-angle-right"></i>
-
+                    <!-- <li class="nav-link"><a>Bài viết</a>
                         <ul class="sub-menu">
-                            <li><a href="?view=list-orders">Danh sách</a></li>
+                            <li><a>Thêm mới</a></li>
+                            <li><a>Danh sách</a></li>
+                            <li><a>Thêm danh mục</a></li>
+                            <li><a>Danh sách danh mục</a></li>
                         </ul>
                     </li>
+                    <li class="nav-link"><a>Sản phẩm</a></li>
+                    <li class="nav-link"><a>Đơn hàng</a></li>
+                    <li class="nav-link"><a>Hệ thống</a></li> -->
+
                 </ul>
             </div>
             <div id="wp-content">
                 <?php
                 $view = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
                 require "views/{$view}.php";
+
                 ?>
             </div>
         </div>
+
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/app.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>

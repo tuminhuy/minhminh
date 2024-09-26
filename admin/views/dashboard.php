@@ -39,6 +39,15 @@ $CountOrder3 = mysqli_num_rows($sql_CountOrder3);
             </div>
         </div>
         <div class="col">
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header">DOANH SỐ</div>
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo number_format($AllMoney, 0, ',', '.') ?> đồng</h5>
+                    <p class="card-text">Doanh số hệ thống</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
             <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
                 <div class="card-header">ĐƠN HÀNG HỦY</div>
                 <div class="card-body">

@@ -1,8 +1,14 @@
 <?php
-$mysqli = new mysqli("localhost","root","","minhminh");
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "minhminh";
 
-if ($mysqli -> connect_errno) {
-  echo "Kết nối thất bại: " . $mysqli -> connect_error;
-  exit();
+// Tạo kết nối
+$mysqli = new mysqli($servername, $username, $password, $dbname);
+
+// Kiểm tra kết nối
+if ($mysqli->connect_error) {
+    die("Kết nối thất bại: " . $mysqli->connect_error);
 }
 ?>

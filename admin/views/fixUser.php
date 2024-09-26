@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                            Bán hàng
+                            Thống kê doanh thu
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
                         <ul class="sub-menu">
@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
                             <div class="nav-link-icon d-inline-flex">
                                 <i class="far fa-folder"></i>
                             </div>
-                            Users
+                            Quản lý thành viên
                         </a>
                         <i class="arrow fas fa-angle-right"></i>
 

@@ -2,7 +2,7 @@
 include("../conection.php");
 
 // Truy vấn lấy danh sách đơn hàng
-$sql_orders = "SELECT hoadon.*, thanhvien.TenDangNhap AS username 
+$sql_orders = "SELECT hoadon.*, thanhvien.TenDangNhap AS username, thanhvien.SoDienThoai 
                FROM hoadon
                JOIN thanhvien ON hoadon.ID_ThanhVien = thanhvien.ID_ThanhVien
                ORDER BY hoadon.ThoiGianLap DESC";
@@ -44,7 +44,7 @@ $query_orders = mysqli_query($mysqli, $sql_orders);
                         <td><?php echo $row_order['ID_HoaDon']; ?></td>
                         <td><?php echo $row_order['username']; ?></td>
                         <td><?php echo $row_order['SoDienThoai']; ?></td>
-                        <td><?php echo $row_order['GiaTien']; ?></td>
+                        <td><?php echo number_format($row_order['GiaTien'], 0, ',', '.'); ?> đồng</td>
                         <td><?php echo $row_order['ThoiGianLap']; ?></td>
                         <td><?php echo $row_order['XuLy']; ?></td>
                         <td>
