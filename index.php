@@ -77,6 +77,15 @@ $query_product = mysqli_query($mysqli, $sql_product);
       flex: 1;
       margin-right: 10px;
     }
+
+    .custom-chat-container {
+      width: 400px; /* Điều chỉnh chiều rộng */
+      height: 600px; /* Điều chỉnh chiều cao */
+      position: fixed; /* Đặt vị trí cố định */
+      bottom: 20px; /* Cách đáy 20px */
+      right: 20px; /* Cách phải 20px */
+      z-index: 1000; /* Đảm bảo khung chat nằm trên các phần tử khác */
+    }
   </style>
 </head>
 
@@ -134,69 +143,25 @@ $query_product = mysqli_query($mysqli, $sql_product);
     <p class="site-footer__copyright-content">
       © 2024,
       <a href="http://localhost:8080/minhminh/index.php" \title="" style=" color: red"> Minh Cake </a>
-  </div>
+  </div>   
 
-  <!-- Chat Box Icon -->
-  <div id="chat-icon">
-    <i class="fas fa-comments"></i>
-  </div>
-
-  <!-- Chat Box Container -->
-  <div id="chat-box-container">
-    <div id="chat-box"></div>
-    <div id="chat-input-container">
-      <input type="text" id="user-input" class="form-control" placeholder="Nhập tin nhắn...">
-      <button id="send-button" class="btn btn-primary">Gửi</button>
-    </div>
-  </div>
-
-  <!-- Sử dụng phiên bản đầy đủ của jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <div id="coze-chat-container" class="custom-chat-container"></div>
+  <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/0.1.0-beta.5/libs/oversea/index.js"></script>
   <script>
-    $(document).ready(function() {
-      $('#chat-icon').click(function() {
-        $('#chat-box-container').toggle();
-      });
-
-      $('#send-button').click(function() {
-        sendMessage();
-      });
-
-      $('#user-input').keypress(function(event) {
-        if (event.which == 13) {
-          event.preventDefault();
-          sendMessage();
-        }
-      });
-
-      function sendMessage() {
-        var userInput = $('#user-input').val();
-        if (userInput.trim() !== '') {
-          $('#chat-box').append('<div class="message user-message">' + userInput + '</div>');
-          $('#user-input').val('');
-          sendMessageToAI(userInput);
-        }
-      }
-
-      function sendMessageToAI(message) {
-        $.ajax({
-          url: 'chat_ai.php', // Đảm bảo đường dẫn này là chính xác
-          method: 'POST',
-          data: { message: message },
-          success: function(response) {
-            $('#chat-box').append('<div class="message ai-message">' + response + '</div>');
-            $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-          },
-          error: function(xhr, status, error) {
-            console.error('Error:', error);
-          }
-        });
-      }
+    new CozeWebSDK.WebChatClient({
+      config: {
+        bot_id: '7420432632720474128',
+      },
+      componentProps: {
+        title: 'Coze',
+        container: '#coze-chat-container' // Chỉ định phần tử chứa khung chat
+      },
     });
+    
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </html>
