@@ -248,6 +248,7 @@ while($row_fru = mysqli_fetch_array($query_fru)){
       © 2024, 
       <a href="" \title=""style=" color: red" >  Minh Cake</a>
     </div>  
-  </div>      
+  </div>
+  
 </body>
 </html>

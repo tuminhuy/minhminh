@@ -77,15 +77,7 @@ $query_product = mysqli_query($mysqli, $sql_product);
       flex: 1;
       margin-right: 10px;
     }
-
-    .custom-chat-container {
-      width: 400px; /* Điều chỉnh chiều rộng */
-      height: 600px; /* Điều chỉnh chiều cao */
-      position: fixed; /* Đặt vị trí cố định */
-      bottom: 20px; /* Cách đáy 20px */
-      right: 20px; /* Cách phải 20px */
-      z-index: 1000; /* Đảm bảo khung chat nằm trên các phần tử khác */
-    }
+ 
   </style>
 </head>
 
@@ -144,7 +136,7 @@ $query_product = mysqli_query($mysqli, $sql_product);
       © 2024,
       <a href="http://localhost:8080/minhminh/index.php" \title="" style=" color: red"> Minh Cake </a>
   </div>   
-
+//chat box ai
   <div id="coze-chat-container" class="custom-chat-container"></div>
   <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/0.1.0-beta.5/libs/oversea/index.js"></script>
   <script>
@@ -154,7 +146,7 @@ $query_product = mysqli_query($mysqli, $sql_product);
       },
       componentProps: {
         title: 'Coze',
-        container: '#coze-chat-container' // Chỉ định phần tử chứa khung chat
+        container: '#coze-chat-container' 
       },
     });
     

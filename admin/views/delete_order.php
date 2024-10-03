@@ -1,17 +1,19 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("../conection.php");
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Xóa đơn hàng
-    $sql_delete_order = "DELETE FROM hoadon WHERE ID_HoaDon = $id";
-    mysqli_query($mysqli, $sql_delete_order);
-
-    // Xóa chi tiết đơn hàng
+    // Xóa chi tiết đơn hàng trước
     $sql_delete_order_details = "DELETE FROM chitiethoadon WHERE ID_HoaDon = $id";
     mysqli_query($mysqli, $sql_delete_order_details);
+
+    // Sau đó xóa đơn hàng
+    $sql_delete_order = "DELETE FROM hoadon WHERE ID_HoaDon = $id";
+    mysqli_query($mysqli, $sql_delete_order);
 
     // Sử dụng JavaScript để chuyển hướng sau khi xóa
     echo "<script>
