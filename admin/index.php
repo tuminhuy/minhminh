@@ -117,17 +117,20 @@ if (!isset($_SESSION['admin'])) {
                         </ul>
                     </li>
 
-                    <!-- <li class="nav-link"><a>Bài viết</a>
+                    <li class="nav-link">
+                        <a href="?view=list-new">
+                            <div class="nav-link-icon d-inline-flex">
+                                <i class="far fa-folder"></i>
+                            </div>
+                            Quản Lý Bài Viết
+                        </a>
+                        <i class="arrow fas fa-angle-right"></i>
+
                         <ul class="sub-menu">
-                            <li><a>Thêm mới</a></li>
-                            <li><a>Danh sách</a></li>
-                            <li><a>Thêm danh mục</a></li>
-                            <li><a>Danh sách danh mục</a></li>
+                            <li><a href="?view=add-new">Thêm mới</a></li>
+                            <li><a href="?view=list-new">Danh sách</a></li>
                         </ul>
                     </li>
-                    <li class="nav-link"><a>Sản phẩm</a></li>
-                    <li class="nav-link"><a>Đơn hàng</a></li>
-                    <li class="nav-link"><a>Hệ thống</a></li> -->
 
                 </ul>
             </div>
@@ -135,6 +138,7 @@ if (!isset($_SESSION['admin'])) {
                 <?php
                 $view = isset($_GET['view']) ? $_GET['view'] : 'dashboard';
                 require "views/{$view}.php";
+             
 
                 ?>
             </div>
