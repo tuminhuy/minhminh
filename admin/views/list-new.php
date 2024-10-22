@@ -10,6 +10,7 @@ $query = mysqli_query($mysqli, $sql);
 <html>
 <head>
     <title>Danh Sách Bài Viết</title>
+    <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
 </head>
 <body>
 <div class="container">
@@ -29,7 +30,7 @@ $query = mysqli_query($mysqli, $sql);
                     <tr>
                         <td><?php echo htmlspecialchars($row['id']); ?></td>
                         <td><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td><?php echo htmlspecialchars(substr($row['content'], 0, 100)); ?>...</td>
+                        <td><?php echo htmlspecialchars(substr(strip_tags(html_entity_decode($row['content'])), 0, 100)); ?>...</td>
                         <td>
                             <a href="?view=edit-new&id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-primary btn-sm">Sửa</a>
                             <a href="?view=delete-new&id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?');">Xóa</a>

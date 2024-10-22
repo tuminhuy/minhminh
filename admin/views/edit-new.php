@@ -16,12 +16,43 @@ if (isset($_POST['submit'])) {
     $row = mysqli_fetch_assoc($query);
 }
 ?>
-<div id="content" class="container-fluid">
-    <div class="card">
-        <div class="card-header font-weight-bold">
-            Chỉnh Sửa Bài Viết
-        </div>
-        <div class="card-body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../style.css">
+    <title>Chỉnh Sửa Bài Viết</title>
+    <style>
+        .form-container {
+            max-width: 100%; /* Sử dụng toàn bộ chiều rộng */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+        .form-group textarea {
+            height: 500px; /* Tăng chiều cao của textarea */
+        }
+    </style>
+    <!-- Thêm CKEditor từ CDN -->
+    <script src="https://cdn.ckeditor.com/4.25.0/standard/ckeditor.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2>Chỉnh Sửa Bài Viết</h2>
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="title">Tiêu Đề</label>
@@ -29,10 +60,15 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="form-group">
                     <label for="content">Nội Dung</label>
-                    <textarea class="form-control" name="content" id="content" required><?php echo htmlspecialchars($row['content']); ?></textarea>
+                    <textarea class="form-control" name="content" id="content" rows="10" required><?php echo html_entity_decode($row['content']); ?></textarea>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Cập Nhật</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Cập Nhật</button>
             </form>
         </div>
     </div>
-</div>
+    <script>
+        // Khởi tạo CKEditor
+        CKEDITOR.replace('content');
+    </script>
+</body>
+</html>

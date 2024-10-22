@@ -36,12 +36,40 @@ if (isset($_POST['submit'])) {
 // Kết thúc output buffering và gửi đầu ra
 ob_end_flush();
 ?>
-<div id="content" class="container-fluid">
-    <div class="card">
-        <div class="card-header font-weight-bold">
-            Thêm Bài Viết
-        </div>
-        <div class="card-body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../style.css">
+    <title>Thêm Bài Viết</title>
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+    </style>
+    <!-- Thêm CKEditor từ CDN -->
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2>Thêm Bài Viết</h2>
             <?php if ($message != ''): ?>
                 <div class="alert alert-info"><?php echo $message; ?></div>
             <?php endif; ?>
@@ -52,14 +80,31 @@ ob_end_flush();
                 </div>
                 <div class="form-group">
                     <label for="content">Nội Dung</label>
-                    <textarea class="form-control" name="content" id="content" rows="5" required></textarea>
+                    <textarea class="form-control" name="content" id="content" rows="10" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="img">Hình Ảnh</label>
                     <input class="form-control-file" type="file" name="img" id="img" required>
+                    <img id="preview" src="#" alt="Preview Image" style="display: none;">
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Thêm Bài Viết</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Thêm Bài Viết</button>
             </form>
         </div>
     </div>
-</div>
+    <script>
+        // Khởi tạo CKEditor
+        CKEDITOR.replace('content');
+
+        // Hiển thị hình ảnh xem trước
+        document.getElementById('img').onchange = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        };
+    </script>
+</body>
+</html>

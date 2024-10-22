@@ -24,7 +24,7 @@ $query_news = mysqli_query($mysqli, $sql_news);
                         <img src="image/news/<?php echo htmlspecialchars($row_news['img']); ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($row_news['title']); ?></h5>
-                            <p class="card-text"><?php echo htmlspecialchars(substr($row_news['content'], 0, 100)); ?>...</p>
+                            <p class="card-text"><?php echo substr(strip_tags(html_entity_decode($row_news['content'])), 0, 100); ?>...</p>
                             <a href="news-detail.php?id=<?php echo htmlspecialchars($row_news['id']); ?>" class="btn btn-primary">Đọc thêm</a>
                         </div>
                     </div>
