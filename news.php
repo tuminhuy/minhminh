@@ -12,6 +12,12 @@ $query_news = mysqli_query($mysqli, $sql_news);
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Tin Tức</title>
+    <style>
+        .card-img-top {
+            height: 200px; /* Set a fixed height */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+        }
+    </style>
 </head>
 <body>
     <?php include("menu.php") ?>
