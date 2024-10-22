@@ -8,7 +8,8 @@ if (isset($_POST['submit'])) {
     $content = $_POST['content'];
     $sql_update = "UPDATE news SET title='$title', content='$content' WHERE id=$id";
     mysqli_query($mysqli, $sql_update);
-    header('location:index.php?view=list-new');
+    echo "<script>window.location.href='index.php?view=list-new';</script>";
+    exit(); // Thêm exit() để đảm bảo script dừng lại sau khi chuyển hướng
 } else {
     $sql = "SELECT * FROM news WHERE id=$id";
     $query = mysqli_query($mysqli, $sql);
@@ -24,11 +25,11 @@ if (isset($_POST['submit'])) {
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="title">Tiêu Đề</label>
-                    <input class="form-control" type="text" name="title" id="title" value="<?php echo $row['title']; ?>" required>
+                    <input class="form-control" type="text" name="title" id="title" value="<?php echo htmlspecialchars($row['title']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="content">Nội Dung</label>
-                    <textarea class="form-control" name="content" id="content" required><?php echo $row['content']; ?></textarea>
+                    <textarea class="form-control" name="content" id="content" required><?php echo htmlspecialchars($row['content']); ?></textarea>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">Cập Nhật</button>
             </form>
