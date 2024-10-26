@@ -117,7 +117,7 @@ $query_comment = mysqli_query($mysqli, $sql_comment);
                                     <div class="details col-md-6">
                                         <h3 class="product-title"><?php echo $row_product['TenSanPham']; ?></h3>
                                         <p class="product-description"><?php echo $row_product['MoTa']; ?></p>
-                                        <h4 class="price">Giá hiện tại: <span><?php echo $row_product['GiaBan']; ?> Đồng</span></h4>
+                                        <h4 class="price">Giá hiện tại: <span><?php echo number_format($row_product['GiaBan'], 0, ',', '.'); ?> Đồng</span></h4>
                                         <p class="vote"><strong>100%</strong> hàng <strong>Chất lượng</strong>, đảm bảo <strong>Uy tín</strong>!</p>
                                         <h4 class="stock">Số lượng còn lại: <span><?php echo $row_product['SoLuong']; ?> sản phẩm</span></h4>
                                         <?php if (isset($_SESSION['TenDangNhap'])) { ?>

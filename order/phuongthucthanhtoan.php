@@ -157,7 +157,7 @@ if (isset($_POST['dathang'])) {
                                                 <?= $value['qty'] ?>
                                             </td>
                                             <td>
-                                                <?= $value['GiaBan'] ?>  Đồng
+                                                <?= number_format($value['GiaBan'],0,',','.'); ?>  Đồng
                                             </td>
                                         </tbody>
                                         <?php
@@ -180,7 +180,7 @@ if (isset($_POST['dathang'])) {
 
                                 ?>
                                 <h5 style="float: right;">Tổng tiền :
-                                    <?= $allMoney ?> Đồng
+                                    <?= number_format($allMoney,0,',','.'); ?> Đồng
                                 </h5>
 
                                 </br>
@@ -227,7 +227,7 @@ if (isset($_POST['dathang'])) {
                             <div class="col-md-12">
                                 <label for="kh_cmnd">Tổng tiền</label>
                                 <input type="text" class="form-control" name="kh_cmnd" id="kh_cmnd"
-                                    value="<?php echo $row_getOrder['GiaTien'] ?>" readonly="">
+                                    value="<?php echo number_format($row_getOrder['GiaTien'],0,',','.'); ?> Đồng" readonly="">
                             </div>
                         </div>
                         <form action="" method="POST">

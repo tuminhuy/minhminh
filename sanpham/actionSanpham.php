@@ -142,7 +142,7 @@ session_start();
                       <?php echo $row_category_product['TenSanPham']; ?>
                     </h2>
                     <h6>Giá:
-                      <?php echo $row_category_product['GiaBan']; ?> VND
+                      <?php echo number_format($row_category_product['GiaBan'], 0, ',', '.'); ?> Đồng
                     </h6>
                     <?php if (isset($_SESSION['TenDangNhap'])) {
                       ?>

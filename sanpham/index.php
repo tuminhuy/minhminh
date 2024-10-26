@@ -72,7 +72,7 @@ session_start();
                <a class="nav-link "  href="../historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
               </li>
               <li class="nav-item" >
-                <a class="nav-link active"  href="news.php" style="color:white;">TIN TỨC</a>
+              <a class="nav-link active"  href="news.php" style="color:white;">TIN TỨC</a>
                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>
@@ -80,9 +80,9 @@ session_start();
                 <li class="nav-item">
                   <a type="button" class="btn btn-secondary" href="../ThanhVien/profile.php?id=<?php echo $_SESSION['ID_ThanhVien']?>" id="btn" style="color:white;"></span> <?php echo $_SESSION['HoVaTen']?></a>
                 </li>
-              <?php } else {?>
+              <?php } else { ?>
                 <li><a type="button" class="btn btn-secondary" href="../ThanhVien/login.php">&nbsp;ĐĂNG NHẬP  </a></li>
-              <?php }?>
+              <?php } ?>
             </ul>
            
           </div>
@@ -130,7 +130,7 @@ session_start();
            <div class="d-flex flex-column text-center border">
              <img src="../image/product/<?php echo $row_product['Img'];?>" />
              <h2><?php echo $row_product['TenSanPham'];?></h2>
-             <h6>Giá: <?php echo $row_product['GiaBan'];?> VND</h6>
+             <h6>Giá: <?php echo number_format($row_product['GiaBan'], 0, ',', '.');?> Đồng</h6>
              <?php if(isset($_SESSION['TenDangNhap'])) { 
         ?>
         <input type="submit" class="btn btn-info" name='submit' value="Mua">  
@@ -160,7 +160,7 @@ session_start();
      <div class="d-flex flex-column text-center border">
        <img  src="../image/product/<?php echo $row_vege['Img'];?>" />
        <h2><?php echo $row_vege['TenSanPham'];?></h2>
-       <h6>Giá: <?php echo $row_vege['GiaBan'];?> VND</h6>
+       <h6>Giá: <?php echo number_format($row_vege['GiaBan'], 0, ',', '.');?> Đồng</h6>
        <?php if(isset($_SESSION['TenDangNhap'])) { 
         ?>
         <input type="submit" class="btn btn-info" name='submit' value="Mua">  
@@ -191,7 +191,7 @@ while($row_fru = mysqli_fetch_array($query_fru)){
    <div class="d-flex flex-column text-center border">
      <img src="../image/product/<?php echo $row_fru['Img'];?>" />
      <h2><?php echo $row_fru['TenSanPham'];?></h2>
-     <h6>Giá: <?php echo $row_fru['GiaBan'];?> VND</h6>
+     <h6>Giá: <?php echo number_format($row_fru['GiaBan'], 0, ',', '.');?> Đồng</h6>
      <?php if(isset($_SESSION['TenDangNhap'])) { 
         ?>
         <input type="submit" class="btn btn-info" name='submit' value="Mua">  
@@ -221,7 +221,7 @@ while($row_fru = mysqli_fetch_array($query_fru)){
    <div class="d-flex flex-column text-center border">
      <img src="../image/product/<?php echo $row_meat['Img'];?>" />
      <h2><?php echo $row_meat['TenSanPham'];?></h2>
-     <h6>Giá: <?php echo $row_meat['GiaBan'];?> VND</h6>
+     <h6>Giá: <?php echo number_format($row_meat['GiaBan'], 0, ',', '.');?> Đồng</h6>
     <?php if(isset($_SESSION['TenDangNhap'])) { 
         ?>
         <input type="submit" class="btn btn-info" name='submit' value="Mua">  

@@ -105,7 +105,7 @@ $query_product = mysqli_query($mysqli, $sql_product);
                 <img src="image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h2><?php echo $row_product['TenSanPham']; ?></h2>
-                  <h6>Giá: <?php echo $row_product['GiaBan']; ?> VND</h6>
+                  <h6>Giá: <?php echo number_format($row_product['GiaBan'], 0, ',', '.'); ?> Đồng</h6>
                   <input type="submit" class="btn btn-info" name='submit' value="Mua">
                 </div>
               </div>
@@ -119,8 +119,8 @@ $query_product = mysqli_query($mysqli, $sql_product);
               <img src="image/product/<?php echo $row_product['Img']; ?>" class="card-img-top" alt="...">
               <div class="card-body">
                 <h2><?php echo $row_product['TenSanPham']; ?></h2>
-                <h6>Giá: <?php echo $row_product['GiaBan']; ?> VND</h6>
-                <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
+                <h6>Giá: <?php echo number_format($row_product['GiaBan'], 0, ',', '.'); ?> Đồng</h6>                
+                 <input type="submit" class="btn btn-info" name='submit' value="Xem Thông Tin">
               </div>
             </div>
           </form>
