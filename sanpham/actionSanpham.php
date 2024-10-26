@@ -70,6 +70,9 @@ session_start();
                 <li class="nav-item">
                   <a class="nav-link active" href="../historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
                 </li>
+                <li class="nav-item" >
+                <a class="nav-link active"  href="news.php" style="color:white;">TIN TỨC</a>
+               </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>
                 </li>
@@ -134,7 +137,7 @@ session_start();
                 <form class="card" style="width: 25%; float:left"
                   action="infoProduct.php?id_product=<?php echo $row_category_product['ID_SanPham']; ?>" method="POST">
                   <div class="d-flex flex-column text-center border">
-                    <img src="../image/product/<?php echo $row_category_product['Img']; ?>" />
+                    <img src="../image/product/<?php echo $row_category_product['Img']; ?>" class="fixed-size-img" />
                     <h2>
                       <?php echo $row_category_product['TenSanPham']; ?>
                     </h2>
@@ -164,7 +167,7 @@ session_start();
                 <form class="card" style="width: 50%; float:left"
                   action="infoProduct.php?id_product=<?php echo $row_search['ID_SanPham']; ?>" method="POST">
                   <div class="d-flex flex-column text-center border">
-                    <img src="../image/product/<?php echo $row_search['Img']; ?>" />
+                    <img src="../image/product/<?php echo $row_search['Img']; ?>" class="fixed-size-img" />
                     <h2>
                       <?php echo $row_search['TenSanPham']; ?>
                     </h2>

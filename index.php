@@ -136,7 +136,7 @@ $query_product = mysqli_query($mysqli, $sql_product);
       © 2024,
       <a href="http://localhost:8080/minhminh/index.php" \title="" style=" color: red"> Minh Cake </a>
   </div>   
-//chat box ai
+<!-- chat box ai -->
   <div id="coze-chat-container" class="custom-chat-container"></div>
   <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/0.1.0-beta.5/libs/oversea/index.js"></script>
   <script>

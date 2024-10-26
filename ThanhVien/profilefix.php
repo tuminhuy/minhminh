@@ -115,6 +115,9 @@ if (isset($_POST['sua']) && $_POST['HoVaTen'] != "" && $_POST['Email'] != "" && 
                   <a class="nav-link" href="../contact.php?id=<?php echo $_SESSION['ID_ThanhVien'] ?>"
                     style="color:white;">LIÊN HỆ</a>
                 </li>
+                <li class="nav-item" >
+                <a class="nav-link active"  href="news.php" style="color:white;">TIN TỨC</a>
+               </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>
                 </li>

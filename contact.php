@@ -69,6 +69,9 @@ if (isset($_POST['contact'])) {
                     <li class="nav-item">
                         <a class="nav-link active" href="historyOrder.php" style="color:white;">LỊCH SỬ ĐẶT HÀNG</a>
                     </li>
+                    <li class="nav-item" >
+                        <a class="nav-link active"  href="news.php" style="color:white;">TIN TỨC</a>
+                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ThanhVien/logout.php" style="color:white;">ĐĂNG XUẤT</a>
                     </li>
